@@ -19,9 +19,9 @@ matrix:
   include:
   - name: "Compile Server"    
     script:
-      - docker run -it -v "${TRAVIS_BUILD_DIR}:/docker/foundationdb" ${AWS_USER_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/fdb-build /bin/bash -c "cd /docker/foundationdb"
+      - docker run -it -v "${TRAVIS_BUILD_DIR}:/docker/foundationdb" ${AWS_USER_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/fdb-build /bin/bash -c "cd /docker/foundationdb && make"
 addons:
   artifacts:
     s3_region: $AWS_DEFAULT_REGION
-    working_dir: $TRAVIS_BUILD_DIR/bin/*
+    working_dir: $TRAVIS_BUILD_DIR/bin/
     debug: true
